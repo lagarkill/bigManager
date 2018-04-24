@@ -1,6 +1,7 @@
-var btnCargar = document.getElementById('button');
+//var btnCargar = document.getElementById('button');
 var xhr = new XMLHttpRequest();
 var section = document.getElementById('section');
+var jeison = JSON.parse(xhr.responseText);
 
 onload = function hidden (){
     document.getElementById('hidden').style.display='block';
@@ -11,10 +12,10 @@ function promise ( METHOD , url , boolean ) {
 return new Promise(function(resolve , reject){
   
         xhr.open( METHOD , url , boolean);
-        xhr.onreadystatechange = function(){
-            console.log(xhr.readyState);
+        xhr.onload = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
-                resolve(xhr.response);   
+                resolve(jeison); 
+                //document.getElementById('button').onclick = resolve;  
             } else {
                 reject(Error(xhr.statusText));
             }}
@@ -39,17 +40,24 @@ return new Promise(function(resolve , reject){
 };
 
 promise( "GET", "http://api.icndb.com/jokes/random" , true).then(function(response) { 
-    console.log('Cargada correctamente' , response)
-    section.innerHTML = xhr.responseText;
-})
+    
+    //document.write(jaison.value);
+    for (let value in jeison){
+        document.getElementById('button').onclick = jeison[value];
+    }
+},function (reject) {
+    console.log("in da face")
+});
+
+/*var botones = function (){
+    let promesa = promise ;
+    document.getElementById('button').onclick = promesa();
+}*/
 
 
-btnCargar.addEventListener('click', );
+//btnCargar.addEventListener('click', botones);
 
 
 /*function button (){
     alert('No dijiste la palabra magica!')
 };*/
-
-//document.getElementById('button').onclick = peticionAJAX;
-
