@@ -40,11 +40,20 @@ return new Promise(function(resolve , reject){
 };
 
 promise( "GET", "http://api.icndb.com/jokes/random" , true).then(function(response) { 
-    
-    //document.write(jaison.value);
-    for (let value in jeison){
-        document.getElementById('button').onclick = jeison[value];
+    let array = [];
+    for (let i = 0; i <= array.length; i++) {
+        debugger
+        const element = array[i]; 
+        if(array == true){
+        array.push(jeison)
+        }  
     }
+    
+    document.getElementById('button').onclick = array;
+    //document.write(jaison.value);
+    /*for (let value in jeison){
+        document.getElementById('button').onclick = jeison[value];
+    }*/
 },function (reject) {
     console.log("in da face")
 });
