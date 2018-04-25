@@ -1,6 +1,5 @@
-btnCargar = document.getElementById('button');
+
 var xhr = new XMLHttpRequest();
-//var section = document.getElementById('section');
 
 onload = function hidden (){
     document.getElementById('hidden').style.display='block';
@@ -54,8 +53,13 @@ promise( "GET", "http://api.icndb.com/jokes/random" , true).then((response) => {
             console.log(array)
           })*/
     array.push(response.value.joke);
+
     console.log(array);
+    
+    let section = document.getElementById('section');
+    
     section.innerHTML = array;
+    //section.innerHTML = array;
    /* for (let i = 0; i <= response.length; i++) {
     
         if( i < response.length){
