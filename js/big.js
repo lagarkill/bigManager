@@ -1,9 +1,14 @@
 
 var xhr = new XMLHttpRequest();
 
+var section = document.getElementById('section');
+
+var array = [];
+
 onload = function hidden (){
     document.getElementById('hidden').style.display='block';
 };
+
 
  
 function promise ( METHOD , url , boolean ) {
@@ -39,42 +44,27 @@ let promesa = new Promise(function(resolve , reject){
 
 promise( "GET", "http://api.icndb.com/jokes/random" , true).then((response) => { 
 
-    let array = [];
-   /* function addToArray (data, array, callback) {
+    
 
-        if (!array) {
-          callback(new Error('No existe el array'), null)
+    for (let i = 0; i <= response.length; i++) {
+
+        const element = response[i];
+
+        if( !response ){
+            return
         } else {
-          array.push(data)
-          callback(null, array)
-        };};
-    addToArray(JSON.parse(xhr.responseText), array, function (err) {
-            if (err) return console.log(err.message)
-            console.log(array)
-          })*/
-    array.push(response.value.joke);
+            array.push(element)
+        }
+        
+    }
+    
 
     console.log(array);
-    
-    let section = document.getElementById('section');
-    
-    section.innerHTML = array;
-    //section.innerHTML = array;
-   /* for (let i = 0; i <= response.length; i++) {
-    
-        if( i < response.length){
 
-        array.push(JSON.parse(xhr.responseText))
-let section = document.getElementById('section');
-    section.innerHTML = array;
-        } 
-    };*/
-   
-    
-    //btnCargar.onclick = array;
-    
-   
+
 }).catch(function (reject) {
     console.log("in da face");
 })
+
+section.innerHTML = array;
 
